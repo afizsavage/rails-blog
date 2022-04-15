@@ -17,6 +17,31 @@
         <p class="mt-5">
             <%= @post.text %>
         </p>
+        <%= form_with model: @like, url: user_post_likes_path(user_id: current_user.id, post_id: @post.id) do |form| %>
+          <div>
+            <%= form.hidden_field :author_id, value: current_user.id %>
+          </div>
+          <div>
+            <%= form.hidden_field :post_id, value: @post.id %>
+          </div>
+          <%= form.submit 'Like' %>
+        <% end %>
+    </div>
+
+    <div class="post-comment">
+      <%= form_with model: @comment, url: "/users/#{current_user.id}/posts/#{@post.id}/comments", scope: :comment do |form| %>
+        <div>
+          <%= form.hidden_field :author_id, value: current_user.id %>
+        </div>
+        <div>
+          <%= form.hidden_field :post_id, value: @post.id %>
+        </div>
+        <div>
+          <%= form.label :text %>
+          <%= form.text_area :text %>
+        </div>
+        <%= form.submit 'Comment' %>
+      <% end %>
     </div>
     <%= render partial: "partials/commentCard", locals:{ comments: @comments } %>
 </div>
