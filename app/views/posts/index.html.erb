@@ -1,15 +1,13 @@
 <div class="w-full">
-    <div class="">
-        <h2>All Posts</h2>
-        <button type="button" class="">
-            <%= link_to "New Post", new_user_post_path %>
-        </button>
-    </div>
     <div class="mb-5">
         <%= render partial: "partials/userCard", locals: { user: @user } %>
     </div>
+    <div class="w-full flex justify-end ">
+        <button type="button" class="border-2 text medium py-2 px-4">
+            <%= link_to "Add Post", new_user_post_path %>
+        </button>
+    </div>
     <div>
-
         <ul>
             <% @user_posts.each_with_index do |post,index| %>
                 <li class="my-5">
