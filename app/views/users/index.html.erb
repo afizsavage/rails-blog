@@ -1,2 +1,7 @@
 
- <p>Here is the list of our users</p>
+
+<div>
+  <% @users.each do |user|%>
+    <%= render partial: "partials/userCard", locals: { user: user } %>
+  <% end %>
+</div>
