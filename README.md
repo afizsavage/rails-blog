@@ -1,6 +1,6 @@
-# Blog App
+# Rails Blog
 
-Blog App is a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
+Rails Blog is a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
 ## Built With
 
