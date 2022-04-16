@@ -18,6 +18,42 @@
             <%= @post.text %>
         </p>
     </div>
-    <%= render partial: "partials/commentCard", locals:{ comments: @comments } %>
+    <div class="w-full mt-5 mb-7">
+        <div class="flex justify-end">
+            <%= form_with model: @like, url: user_post_likes_path(user_id: current_user.id, post_id: @post.id) do |form| %>
+                <div>
+                    <%= form.hidden_field :author_id, value: current_user.id %>
+                </div>
+                <div>
+                    <%= form.hidden_field :post_id, value: @post.id %>
+                </div>
+                <span class="border-2 py-2 px-4">
+                    <%= form.submit 'Like' %>
+                </span>
+            <% end %>
+        </div>
+    </div>
+    <div class="mb-5">
+        <%= render partial: "partials/commentCard", locals:{ comments: @comments } %>
+    </div>
+    <div class="">
+        <%= form_with model: @comment, url: "/users/#{current_user.id}/posts/#{@post.id}/comments", scope: :comment do |form| %>
+            <div>
+                <%= form.hidden_field :author_id, value: current_user.id %>
+            </div>
+            <div>
+                <%= form.hidden_field :post_id, value: @post.id %>
+            </div>
+            <div class="flex flex-col">
+                <span class="mb-2">
+                    <%= form.label :comment %>
+                </span>
+                <%= form.text_area :text %>
+                <span class="mt-2 self-end border-2 py-2 px-3">
+                    <%= form.submit 'Add Comment' %>
+                </span>
+            </div>
+        <% end %>
+    </div>
 </div>
 
