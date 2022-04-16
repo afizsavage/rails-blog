@@ -2,9 +2,6 @@ class Like < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :post
 
-  validates :post, presence: true
-  validates :author, presence: true
-
   after_save :update_likes_counter
 
   private
