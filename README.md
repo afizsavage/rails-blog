@@ -46,6 +46,12 @@ Type `bundle exec rspec` in the command line to run the tests
 - Twitter: [@fizzo_geek](https://twitter.com/fizzo_geek)
 - LinkedIn: [@afiz-savage](https://www.linkedin.com/in/afiz-savage-3b91a21ba/)
 
+👤 **Victor Barh**
+
+- GitHub: [@Vvic778](https://github.com/vic778)
+- Twitter: [@victoirBarh](https://twitter.com/)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/victoir-barh)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
