@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @user = User.find(params[:user_id])
     @user_posts = @user.posts.includes(:comments, :likes)
@@ -24,6 +26,16 @@ class PostsController < ApplicationController
       flash.alert = 'Post was not created.'
       render :new
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    user = User.find(params[:user_id])
+    user.posts_counter -= 1
+    @post.destroy!
+    user.save
+    flash[:success] = 'Post deleted!'
+    redirect_to user_posts_path(user.id)
   end
 
   private
