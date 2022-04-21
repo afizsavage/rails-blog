@@ -36,6 +36,7 @@
     <div class="mb-5">
         <%= render partial: "partials/commentCard", locals:{ comments: @comments } %>
     </div>
+    
     <div class="">
         <%= form_with model: @comment, url: "/users/#{current_user.id}/posts/#{@post.id}/comments", scope: :comment do |form| %>
             <div>
