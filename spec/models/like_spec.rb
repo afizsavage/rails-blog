@@ -1,20 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  before(:each) do
-    @user = User.new(id: 1, name: 'Fred', bio: 'I am a content creator', photo: '', posts_counter: 0)
-    @like = Like.new(author_id: @user.id, post_id: @user.id)
-  end
+  describe 'Like model' do
+    before(:each) do
+      subject_user = User.new(name: 'Charles', photo: 'img', bio: 'Dev', posts_counter: 0,
+                              email: 'abc@gmail.com', password: '123456', password_confirmation: '123456')
 
-  describe 'validation tests' do
-    it 'validates the author_id is an integer' do
-      @like.author_id = 1
-      expect(@like.author_id).to eq(1)
-    end
+      visit new_user_session_path
+      login_as(subject_user, scope: :user)
+      first_post = Post.new(author: subject_user, title: 'Hola', text: 'This is my first post')
+      like = Like.new(post: first_post, author: subject_user)
 
-    it 'validates the post_id is an integer' do
-      @like.post_id = 1
-      expect(@like.post_id).to eq(1)
+      before { like.save }
+
+      it 'like should be present' do
+        expect(first_post.likes.length).to eq 1
+      end
     end
   end
 end
