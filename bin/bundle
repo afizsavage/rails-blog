@@ -16,7 +16,7 @@ m = Module.new do
   end
 
   def env_var_version
-    ENV['BUNDLER_VERSION']
+    ENV.fetch('BUNDLER_VERSION')
   end
 
   def cli_arg_version
@@ -36,7 +36,7 @@ m = Module.new do
   end
 
   def gemfile
-    gemfile = ENV['BUNDLE_GEMFILE']
+    ENV.fetch('BUNDLER_VERSION')
     return gemfile if gemfile && !gemfile.empty?
 
     File.expand_path('../Gemfile', __dir__)
