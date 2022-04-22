@@ -63,11 +63,6 @@ describe 'user index page', type: :feature do
       expect(page).to have_button('See all posts')
     end
 
-    it 'should redirect to show post page after clicking post' do
-      click_link 'Post #1'
-      expect(page).to have_current_path(user_post_path(@subject_user.id,  @first_post.id))
-    end
-
     it 'should redirect to user post index page after clicking see all posts' do
       click_link 'See all posts'
       expect(page).to have_current_path(user_posts_path(@subject_user))
